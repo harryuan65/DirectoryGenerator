@@ -35,7 +35,7 @@ module DirectoryGenerator
     #
     def dfs(path, dir)
       if dir.is_a?(String) # just a file name
-        @paths << { path => dir + @extension } # folder_name => file_name
+        @paths << { path => trim(dir) + @extension } # folder_name => file_name
         return
       end
 
@@ -46,7 +46,7 @@ module DirectoryGenerator
             dfs(File.join(path, sub_dir_name), sub_dir_contents)
           end
         when String # Handle root case
-          @paths << { path => content + @extension }
+          @paths << { path => trim(content) + @extension }
         end
       end
     end
@@ -63,6 +63,10 @@ module DirectoryGenerator
           warn "File #{path} already exists"
         end
       end
+    end
+
+    def trim(filename)
+      filename.tr("/", "-")
     end
   end
 end
