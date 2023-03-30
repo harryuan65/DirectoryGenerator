@@ -11,6 +11,7 @@ module DirectoryGenerator
     method_option :dry_run, desc: "dry run"
     method_option :root_path, default: "./", desc: "root directory to put generates directories"
     method_option :ext, default: "md", desc: "file extension for each leaf file"
+    method_option :template, desc: "template for leaf file"
     def generate(yaml_path)
       runner = DirectoryGenerator::Runner.new(yaml_path, options)
       runner.generate_directories

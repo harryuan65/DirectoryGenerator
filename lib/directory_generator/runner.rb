@@ -15,6 +15,7 @@ module DirectoryGenerator
       @dry_run = options[:dry_run]
       @root_path = options[:root_path] || "./"
       @extension = ".#{options[:ext] || "md"}"
+      @template_path = options[:template]
       @root_dir_hash = Psych.safe_load(File.read(yaml_path))
       @paths = []
     end
@@ -66,7 +67,7 @@ module DirectoryGenerator
 
         path = File.join(folder_name, file_name)
         if !File.file?(path)
-          File.open(path, "w")
+          File.write(path, template)
         else
           warn "File #{path} already exists"
         end
@@ -75,6 +76,14 @@ module DirectoryGenerator
 
     def trim(filename)
       filename.tr("/", "-")
+    end
+
+    def template
+      @template ||= if @template_path
+                      File.read(File.expand_path(@template_path))
+                    else
+                      ""
+                    end
     end
   end
 end

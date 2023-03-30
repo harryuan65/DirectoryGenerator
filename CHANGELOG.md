@@ -7,3 +7,7 @@
 ## [0.1.1] - 2023-03-30
 
 - Refactor: Centralize options
+
+## [0.1.2] - 2023-03-30
+
+- Add template option to generate file from template
