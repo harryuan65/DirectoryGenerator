@@ -1,15 +1,44 @@
-# directoryGenerator
+# Directory Generator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/directory_generator`. To experiment with that code, run `bin/console` for an interactive prompt.
+Generate directories from a defined yaml file. Example:
 
-TODO: Delete this and the text above, and describe your gem
+Note: All keys are listed as Array elements.
+
+```yaml
+- Basics:
+    - Variables:
+        - Declaration and Initialization
+        - Scope:
+            - Global
+            - Local
+            - Constant and Immutable
+        - Type Inference
+    - Some File
+- Root File
+```
+
+Generates:
+
+```
+MyRoot
+├── Basics
+│   ├── Some File.md
+│   └── Variables
+│       ├── Declaration and Initialization.md
+│       ├── Scope
+│       │   ├── Constant and Immutable.md
+│       │   ├── Global.md
+│       │   └── Local.md
+│       └── Type Inference.md
+└── Root File.md
+```
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'directory_generator'
+gem 'directory_generator', git: "https://github.com/harryuan65/DirectoryGenerator"
 ```
 
 And then execute:
@@ -18,11 +47,28 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install directory_generator
+    $ git clone https://github.com/harryuan65/DirectoryGenerator
+    $ cd DirectoryGenerator
+    $ gem build directory_generator.gemspec
+    $ gem install directory_generator-0.1.0.gem
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+Usage:
+  directory_generator generate <yaml_path> [options]
+
+Options:
+  [--dry-run=DRY_RUN]      # dry run
+  [--root-path=ROOT_PATH]  # root directory to put generates directories
+                           # Default: ./
+  [--ext=EXT]              # file extension for each leaf file
+                           # Default: md
+```
+
+```bash
+bundle exec directory_generator generate path_to_yaml_file
+```
 
 ## Development
 
