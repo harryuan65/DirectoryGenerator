@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
       (f == __FILE__) || f.match(%r{\A(?:(?:test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
     end
   end
-  spec.bindir = "exe"
+  spec.bindir = "bin"
   spec.executables = ["directory_generator"]
   spec.require_paths = ["lib"]
 
