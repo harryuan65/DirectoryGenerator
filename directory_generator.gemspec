@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative "lib/diretory_generator/version"
+require_relative "lib/directory_generator/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "diretory_generator"
-  spec.version = DiretoryGenerator::VERSION
+  spec.name = "directory_generator"
+  spec.version = DirectoryGenerator::VERSION
   spec.authors = ["harryuan65"]
   spec.email = ["harryuan.65@gmail.com"]
 
   spec.summary = "Generates directories structure from a yml file"
   spec.description = "Generates directories from a yml file"
-  spec.homepage = "https://github.com/harryuan65/DiretoryGenerator"
+  spec.homepage = "https://github.com/harryuan65/directoryGenerator"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/harryuan65/DiretoryGenerator"
-  spec.metadata["changelog_uri"] = "https://github.com/harryuan65/DiretoryGenerator/blob/master/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/harryuan65/directoryGenerator"
+  spec.metadata["changelog_uri"] = "https://github.com/harryuan65/directoryGenerator/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

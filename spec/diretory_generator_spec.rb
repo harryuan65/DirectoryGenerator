@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe DiretoryGenerator do
+RSpec.describe DirectoryGenerator do
   it "has a version number" do
-    expect(DiretoryGenerator::VERSION).not_to be nil
+    expect(DirectoryGenerator::VERSION).not_to be nil
   end
 
   it "does something useful" do

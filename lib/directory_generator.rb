@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "diretory_generator/version"
+require_relative "directory_generator/version"
 
-module DiretoryGenerator
+module DirectoryGenerator
   class Error < StandardError; end
   # Your code goes here...
 end

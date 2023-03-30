@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    diretory_generator (0.1.0)
+    directory_generator (0.1.0)
       erb (~> 2.2.0)
       thor (~> 1.0)
 
@@ -67,7 +67,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
-  diretory_generator!
+  directory_generator!
   rake (~> 13.0)
   reek (~> 6.1)
   rspec (~> 3.0)
