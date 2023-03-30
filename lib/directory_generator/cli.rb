@@ -9,7 +9,7 @@ module DirectoryGenerator
   class CLI < Thor
     desc "generate <yaml_path> [options]", "Generate file structure based on a yaml file"
     method_option :dry_run, desc: "dry run"
-    method_option :root, default: "./", desc: "root directory to put generates directories"
+    method_option :root_path, default: "./", desc: "root directory to put generates directories"
     method_option :ext, default: "md", desc: "file extension for each leaf file"
     def generate(yaml_path)
       root_path = options[:root_path] || "./"
