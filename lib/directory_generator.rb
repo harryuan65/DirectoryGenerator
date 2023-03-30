@@ -19,9 +19,10 @@ module DirectoryGenerator
   # Load entries from yaml and generate a list of paths
   #
   class Runner
-    def initialize(yaml_path)
+    def initialize(yaml_path, extension: "md")
       @root = Psych.safe_load(File.read(yaml_path))
       @paths = []
+      @extension = ".#{extension}"
     end
 
     # @param [Hash] dir: A hash representing a dir structure, loaded from Psych.load
@@ -48,7 +49,7 @@ module DirectoryGenerator
     #
     def dfs(path, dir)
       if dir.is_a?(String) # just a file name
-        @paths << { path => dir } # folder_name => file_name
+        @paths << { path => dir + @extension } # folder_name => file_name
         return
       end
 
@@ -59,7 +60,7 @@ module DirectoryGenerator
             dfs(File.join(path, sub_dir_name), sub_dir_contents)
           end
         when String # Handle root case
-          @paths << { path => content }
+          @paths << { path => content + @extension }
         end
       end
     end
