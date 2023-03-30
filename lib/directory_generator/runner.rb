@@ -16,6 +16,7 @@ module DirectoryGenerator
       @root_path = options[:root_path] || "./"
       @extension = ".#{options[:ext] || "md"}"
       @template_path = options[:template]
+      @numbered = options[:numbered]
       @root_dir_hash = Psych.safe_load(File.read(yaml_path))
       @paths = []
     end
@@ -48,16 +49,22 @@ module DirectoryGenerator
         return
       end
 
-      dir.each do |content| # Basics: [{A => ["b" ,"c"]}, "Some File"]
+      dir.each_with_index do |content, i| # Basics: [{A => ["b" ,"c"]}, "Some File"]
         case content
         when Hash
-          content.each do |sub_dir_name, sub_dir_contents|
-            dfs(File.join(path, sub_dir_name), sub_dir_contents)
+          content.each_with_index do |(sub_dir_name, sub_dir_contents), j|
+            new_sub_dir_name = numbered(sub_dir_name, j)
+            dfs(File.join(path, new_sub_dir_name), sub_dir_contents)
           end
         when String # Handle root case
-          @paths << { path => trim(content) + @extension }
+          content_name = numbered(content, i)
+          @paths << { path => trim(content_name) + @extension }
         end
       end
+    end
+
+    def numbered(name, index)
+      @numbered ? "#{(index + 1).to_s.rjust(2, "0")}_#{name}" : name
     end
 
     def generate_files
