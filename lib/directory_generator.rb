@@ -14,5 +14,4 @@ require "fileutils"
 #         Global Local Const..
 #
 module DirectoryGenerator
-  class Error < StandardError; end
 end
