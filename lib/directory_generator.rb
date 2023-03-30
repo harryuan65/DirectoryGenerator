@@ -2,6 +2,7 @@
 
 require_relative "directory_generator/version"
 require_relative "directory_generator/runner"
+require_relative "directory_generator/cli"
 require "psych"
 require "fileutils"
 
