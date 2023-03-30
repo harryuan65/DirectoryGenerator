@@ -5,18 +5,26 @@ module DirectoryGenerator
   # Load entries from yaml and generate a list of paths
   #
   class Runner
-    def initialize(yaml_path, extension: "md")
-      @root = Psych.safe_load(File.read(yaml_path))
+    # @param [String] yaml_path Path to yaml file
+    # @param [Hash] options
+    # @option options [TrueClass, FalseClass] dry_run, default: nil
+    # @option options [String] root_path, default: "./"
+    # @option options [String] ext: extension, ex: md
+    #
+    def initialize(yaml_path, options)
+      @dry_run = options[:dry_run]
+      @root_path = options[:root_path] || "./"
+      @extension = ".#{options[:ext] || "md"}"
+      @root_dir_hash = Psych.safe_load(File.read(yaml_path))
       @paths = []
-      @extension = ".#{extension}"
     end
 
     # @param [Hash] dir: A hash representing a dir structure, loaded from Psych.load
-    def generate_directories(root_path: "./", dry_run: true)
-      root_path = File.expand_path(root_path)
-      dfs(root_path, @root)
+    def generate_directories
+      @root_path = File.expand_path(@root_path)
+      dfs(@root_path, @root_dir_hash)
 
-      if dry_run
+      if @dry_run
         warn "Dry running: #{@paths}"
         @paths
       else

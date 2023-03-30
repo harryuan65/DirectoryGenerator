@@ -11,38 +11,56 @@ TEST_CASE_PATH = "spec/fixture/files/simple.yml"
 #         Global Local Const..
 #
 
-EXPECTED = [{ "./Basics/Variables/" => "Declaration and Initialization" },
-            { "./Basics/Variables/Scope/" => "Global" },
-            { "./Basics/Variables/Scope/" => "Local" },
-            { "./Basics/Variables/Scope/" => "Constant and Immutable" },
-            { "./Basics/Variables/" => "Type Inference" },
-            { "./Basics/" => "Some File" },
-            { "./" => "Root File" }].freeze
+# :reek:U
+def expected_directories(root_path = "./")
+  [
+    { File.join(root_path, "Basics/Variables/") => "Declaration and Initialization" },
+    { File.join(root_path, "Basics/Variables/Scope/") => "Global" },
+    { File.join(root_path, "Basics/Variables/Scope/") => "Local" },
+    { File.join(root_path, "Basics/Variables/Scope/") => "Constant and Immutable" },
+    { File.join(root_path, "Basics/Variables/") => "Type Inference" },
+    { File.join(root_path, "Basics/") => "Some File" },
+    { root_path => "Root File" }
+  ]
+end
 
 RSpec.describe DirectoryGenerator::Runner do
   let(:example_ext) { "txt" }
+  let(:example_target_root) { "testing123" }
 
-  subject(:given_valid_yaml) { DirectoryGenerator::Runner.new(TEST_CASE_PATH, extension: example_ext) }
   context "when dry running(default)" do
-    it "generates a list of expected directory entries" do
-      # Expand ./Basics... to actual paths
-      expected_list_expanded = EXPECTED.map do |pair|
+    subject(:dry_run) do
+      DirectoryGenerator::Runner.new(TEST_CASE_PATH,
+                                     ext: example_ext,
+                                     root_path: example_target_root,
+                                     dry_run: true).generate_directories
+    end
+
+    let(:expected_list_expanded) do     # Expand ./Basics... to actual paths
+      expected_directories(example_target_root).map do |pair|
         path, content = pair.entries.first
         { File.expand_path(path) => content + ".#{example_ext}" }
       end
+    end
 
-      expect(given_valid_yaml.generate_directories).to eq(expected_list_expanded)
+    it "generates a list of expected directory entries" do
+      expect(dry_run).to eq(expected_list_expanded)
     end
   end
 
   context "when performing" do
-    let(:example_target_root) { "testing123" }
+    subject(:run) do
+      DirectoryGenerator::Runner.new(TEST_CASE_PATH,
+                                     ext: example_ext,
+                                     root_path: example_target_root,
+                                     dry_run: false).generate_directories
+    end
     it "generates expected directories" do
-      given_valid_yaml.generate_directories(root_path: example_target_root, dry_run: false)
+      run
 
-      EXPECTED.each do |pair|
+      expected_directories(example_target_root).each do |pair|
         path, content = pair.entries.first
-        path_to_file = File.expand_path(File.join(example_target_root, path, content + ".#{example_ext}"))
+        path_to_file = File.expand_path(File.join(path, content + ".#{example_ext}"))
         expect(File.file?(path_to_file)).to eq(true), "expected #{path_to_file} to be a file"
       end
     end
