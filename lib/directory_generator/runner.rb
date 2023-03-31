@@ -52,8 +52,8 @@ module DirectoryGenerator
       dir.each_with_index do |content, i| # Basics: [{A => ["b" ,"c"]}, "Some File"]
         case content
         when Hash
-          content.each_with_index do |(sub_dir_name, sub_dir_contents), j|
-            new_sub_dir_name = numbered(sub_dir_name, j)
+          content.each do |sub_dir_name, sub_dir_contents|
+            new_sub_dir_name = numbered(sub_dir_name, i)
             dfs(File.join(path, new_sub_dir_name), sub_dir_contents)
           end
         when String # Handle root case
