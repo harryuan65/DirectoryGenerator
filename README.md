@@ -68,6 +68,7 @@ Options:
 
 ```bash
 bundle exec directory_generator generate path_to_yaml_file
+bundle exec directory_generator generate ./template.yml --root-path MyRoot --ext js --template ./t.js --numbered
 ```
 
 ## Development
