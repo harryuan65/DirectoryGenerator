@@ -1,0 +1,148 @@
+- Intro:
+    - Install and Setup
+    - Basic Syntax and Program Structure
+    - IDE and Text Editor
+
+- Basics:
+    - Variables:
+        - Scopes
+        - Type Inference
+    - Data Types:
+        - Primitive:
+            - Boolean
+            - Integer
+            - Floating Point
+            - Character
+            - String
+        - Collections:
+            - Array/Vector
+            - Hash/Map
+            - Set
+            - Stack and Queue
+            - Tuple
+            - Enum
+            - Struct
+            - Union
+            - Pointer and Reference
+            - Smart Pointer
+        - First Class Functions:
+            - Lambda Functions
+            - Closures
+            - Higher Order Functions
+            - Currying
+            - Partial Application
+    - Control Flow:
+        - Conditional Statements:
+            - If-else Statements
+            - Switch Statements
+        - Looping Statements:
+            - For Loops
+            - While Loops
+            - Do-while Loops
+            - Loop Control Statements
+        - Exception Handling:
+            - Try-catch Statements
+            - Finally Blocks
+    - Operators:
+        - Arithmetic Operators
+        - Comparison Operators
+        - Logical Operators
+        - Bitwise Operators
+        - Assignment Operators
+        - Ternary Operator
+        - Operator Overloading
+- Intermediate:
+    - Object-Oriented Programming:
+        - Classes and Objects
+        - Encapsulation
+        - Inheritance
+        - Polymorphism
+        - Abstract Classes and Interfaces
+        - Access Modifiers
+        - Static and Instance Members
+        - Method Overriding and Overloading
+        - Constructors and Destructors
+        - Copy Constructors and Assignment Operators
+        - Object Composition and Aggregation
+        - Design Patterns:
+            - Factory
+            - Abstract Factory
+            - Strategy
+            - Singleton
+            - Adapter
+            - Facade
+            - Observer
+    - Functional Programming:
+        - Pure Functions
+        - Immutability
+        - Recursion
+        - Higher-Order Functions
+        - Lazy Evaluation
+        - Closures
+        - Currying
+        - Partial Application
+        - Monads
+    - Generics:
+        - Type Parameters
+        - Generic Classes and Functions
+        - Type Constraints
+        - Variance
+        - Type Erasure
+    - Concurrency:
+        - Threads
+        - Mutexes and Semaphores
+        - Condition Variables
+        - Futures and Promises
+        - Async/Await
+        - Actors
+    - File IO:
+        - Text Files
+        - Binary Files
+        - Streams and Buffers
+    - Networking:
+        - TCP/IP
+        - HTTP
+        - WebSockets
+        - RESTful APIs
+        - Serialization Formats
+- Advanced:
+    - Memory Management:
+        - Stack and Heap Memory
+        - Automatic Memory Management
+        - Manual Memory Management
+        - Memory Leaks and Garbage Collection
+        - Smart Pointers
+        - Memory Allocation Strategies
+    - Optimization Techniques:
+        - Algorithm Analysis
+        - Data Structures
+        - Recursion and Iteration
+        - Memoization and Dynamic Programming
+        - Parallelism and Concurrency
+        - Compiler Optimization
+        - Profiling and Benchmarking
+    - Security:
+        - Encryption and Decryption
+        - Hashing and Salting
+        - Digital Signatures
+        - Authentication and Authorization
+        - Common Security Vulnerabilities
+    - Interoperability:
+        - C and C++ Interoperability
+        - Foreign Function Interfaces
+        - Interprocess Communication
+        - Cross-Language Libraries
+    # - Machine Learning:
+    #         - Linear Regression
+    #         - Logistic Regression
+    #         - Decision Trees
+    #         - Random Forests
+    #         - Neural Networks:
+    #                 - Feedforward Networks
+    #                 - Convolutional Networks
+    #                 - Recurrent Networks
+    #         - Unsupervised Learning:
+    #                 - Clustering
+    #                 - Dimensionality Reduction
+    #                 - Autoencoders
+    #         - Reinforcement Learning
